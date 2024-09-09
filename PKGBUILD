@@ -8,16 +8,13 @@ pkgdesc="Quake 4 demo"
 url="https://web.archive.org/web/20061205073314/http://www.idsoftware.com/games/quake/quake4/"
 arch=('i686' 'x86_64')
 license=('custom:"Quake 4 Demo"')
-if [ "$CARCH" = "x86_64" ]; then
-    depends=('lib32-glibc' 'lib32-sdl' 'lib32-libx11' 'lib32-libxext' 'lib32-zlib')
-    optdepends=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver'
-                'lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver')
-else
-    depends=('gcc-libs' 'libgl' 'sdl' 'zlib')
-fi
+depends_x86_64=('lib32-glibc' 'lib32-sdl' 'lib32-libx11' 'lib32-libxext' 'lib32-zlib')
+depends_i686=('gcc-libs' 'libgl' 'sdl' 'zlib')
+optdepends_x86_64=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver'
+            'lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver')
 install="quake4-demo.install"
 source=("${pkgname}.sh" "${pkgname}-dedicated.sh" \
-    'http://slashbunny.com/aur/quake4/quake4-linux-1.0-demo.x86.run')
+    'https://aur.slashbunny.com/quake4/quake4-linux-1.0-demo.x86.run')
 sha256sums=('6f0620a70380214bc57977b27e0d3584f48443e396faa136fabcb8f712b3b581'
             '57c10f7c4771c28ca2e24e5dd6671d01d93e6a5af8df99c42648b54748f7bfdd'
             '69e69e8cb22dd1496bcc98dc63f244d35c516c2e770aba64c72275827814bc73')
